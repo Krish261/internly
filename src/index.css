@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+@theme {
+  --color-neon-accent: #00FFCC;
+  --color-charcoal: #171E1C;
+  --color-surface-matte: #202B28;
+  --color-platinum: #F5F5F5;
+  --color-burned-coral: #FF6B6B;
+  --color-emerald-glow: #2EE59D;
+  --font-sans: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: "JetBrains Mono", "Courier New", Courier, monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-charcoal text-platinum antialiased selection:bg-neon-accent selection:text-charcoal;
+  }
+}
+
+@layer components {
+  .terminal-input {
+    @apply bg-transparent border-b border-white/10 focus:border-neon-accent outline-none py-2 transition-colors font-mono text-lg uppercase text-platinum;
+  }
+  
+  .btn-primary {
+    @apply bg-neon-accent text-charcoal px-8 py-4 font-black uppercase tracking-[0.2em] hover:brightness-110 transition-all active:scale-95 disabled:opacity-50 shadow-[0_0_20px_rgba(0,255,204,0.3)];
+  }
+  
+  .btn-outline {
+    @apply border border-white/10 px-8 py-3 font-bold uppercase tracking-widest hover:bg-white hover:text-charcoal transition-all active:scale-95;
+  }
+  
+  .card-surface {
+    @apply bg-surface-matte border border-white/5 p-6 rounded-lg backdrop-blur-sm transition-all;
+  }
+
+  .heading-bold {
+    @apply font-black tracking-tighter uppercase italic leading-none;
+  }
+
+  .label-mono {
+    @apply text-[10px] font-mono text-white/40 uppercase tracking-[0.2em];
+  }
+}
+
+.glow-neon {
+  box-shadow: 0 0 20px rgba(0, 255, 204, 0.2);
+}
+
+.glow-neon-pulse {
+  animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 5px rgba(0, 255, 204, 0.2); }
+  50% { box-shadow: 0 0 20px rgba(0, 255, 204, 0.5); }
+  100% { box-shadow: 0 0 5px rgba(0, 255, 204, 0.2); }
+}
+
+.text-glow {
+  text-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+}
+
