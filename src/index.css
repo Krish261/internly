@@ -1,14 +1,16 @@
 @import "tailwindcss";
 
 @theme {
-  --color-neon-accent: #00FFCC;
-  --color-charcoal: #171E1C;
-  --color-surface-matte: #202B28;
-  --color-platinum: #F5F5F5;
-  --color-burned-coral: #FF6B6B;
-  --color-emerald-glow: #2EE59D;
-  --font-sans: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --font-mono: "JetBrains Mono", "Courier New", Courier, monospace;
+  --color-neon-accent: #F59E0B; /* Warm Amber */
+  --color-charcoal: #1C1917; /* Warm stone dark */
+  --color-surface-matte: #292524; /* Warm stone surface */
+  --color-platinum: #FAFAF9; /* Soft stone white */
+  --color-burned-coral: #FB7185; /* Warm Rose */
+  --color-emerald-glow: #FCD34D; /* Warm glow */
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
 }
 
 @layer base {
@@ -19,45 +21,45 @@
 
 @layer components {
   .terminal-input {
-    @apply bg-transparent border-b border-white/10 focus:border-neon-accent outline-none py-2 transition-colors font-mono text-lg uppercase text-platinum;
+    @apply bg-transparent border-b border-white/10 focus:border-neon-accent outline-none py-2 transition-colors font-mono text-lg text-platinum;
   }
   
   .btn-primary {
-    @apply bg-neon-accent text-charcoal px-8 py-4 font-black uppercase tracking-[0.2em] hover:brightness-110 transition-all active:scale-95 disabled:opacity-50 shadow-[0_0_20px_rgba(0,255,204,0.3)];
+    @apply bg-neon-accent text-charcoal px-8 py-4 font-bold tracking-wide hover:brightness-105 transition-all active:scale-[0.98] disabled:opacity-50 shadow-[0_4px_20px_rgba(245,158,11,0.2)] rounded-xl;
   }
   
   .btn-outline {
-    @apply border border-white/10 px-8 py-3 font-bold uppercase tracking-widest hover:bg-white hover:text-charcoal transition-all active:scale-95;
+    @apply border border-white/10 px-8 py-3 font-semibold tracking-wide hover:bg-white hover:text-charcoal transition-all active:scale-[0.98] rounded-xl;
   }
   
   .card-surface {
-    @apply bg-surface-matte border border-white/5 p-6 rounded-lg backdrop-blur-sm transition-all;
+    @apply bg-surface-matte border border-white/5 p-6 rounded-2xl backdrop-blur-sm transition-all;
   }
 
   .heading-bold {
-    @apply font-black tracking-tighter uppercase italic leading-none;
+    @apply font-bold tracking-tight leading-tight;
   }
 
   .label-mono {
-    @apply text-[10px] font-mono text-white/40 uppercase tracking-[0.2em];
+    @apply text-[10px] font-mono text-white/40 uppercase tracking-widest;
   }
 }
 
 .glow-neon {
-  box-shadow: 0 0 20px rgba(0, 255, 204, 0.2);
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.15);
 }
 
 .glow-neon-pulse {
-  animation: pulse 2s infinite ease-in-out;
+  animation: pulse 3s infinite ease-in-out;
 }
 
 @keyframes pulse {
-  0% { box-shadow: 0 0 5px rgba(0, 255, 204, 0.2); }
-  50% { box-shadow: 0 0 20px rgba(0, 255, 204, 0.5); }
-  100% { box-shadow: 0 0 5px rgba(0, 255, 204, 0.2); }
+  0% { box-shadow: 0 0 5px rgba(245, 158, 11, 0.1); }
+  50% { box-shadow: 0 0 20px rgba(245, 158, 11, 0.3); }
+  100% { box-shadow: 0 0 5px rgba(245, 158, 11, 0.1); }
 }
 
 .text-glow {
-  text-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+  text-shadow: 0 0 10px rgba(245, 158, 11, 0.3);
 }
 

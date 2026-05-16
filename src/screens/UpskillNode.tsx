@@ -10,91 +10,91 @@ export default function UpskillNode() {
 
   return (
     <div className="min-h-screen bg-charcoal p-8 lg:p-20 space-y-16 max-w-6xl mx-auto">
-      <header className="space-y-4">
-        <div className="flex items-center gap-2 text-neon-accent font-mono text-[10px] font-bold uppercase tracking-[0.3em]">
-           <Brain size={14} /> TARGETED_UPSKILLING_NODE
+      <header className="space-y-6">
+        <div className="flex items-center gap-3 text-neon-accent font-bold text-[11px] uppercase tracking-[0.3em]">
+           <Brain size={18} /> Targeted Learning
         </div>
-        <h1 className="text-5xl font-black italic tracking-tighter uppercase">ACTION_NODE</h1>
-        <p className="label-mono text-white/40 italic">"Closing capability gaps via micro-learning intervention."</p>
+        <h1 className="text-6xl font-black tracking-tight leading-tight uppercase">Action<br/><span className="text-neon-accent">Plan</span></h1>
+        <p className="text-white/40 font-medium max-w-md">Learn key concepts through focused skill building and real-world improvements.</p>
       </header>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
         {/* Interactive Problem/Solution */}
         <div className="space-y-12">
-           <section className="space-y-6">
-              <h3 className="label-mono text-white/20 font-bold tracking-widest text-[10px]">KNOWLEDGE_INTERVENTION // Logic Audit</h3>
-              <div className="bg-black/40 border border-white/5 rounded-2xl overflow-hidden divide-y divide-white/5">
-                 <div className="p-8 space-y-4">
-                    <span className="text-[9px] font-mono text-burned-coral font-bold uppercase tracking-widest">Identified Inefficiency</span>
-                    <pre className="font-mono text-xs text-white/40 bg-white/[0.02] p-6 rounded-xl overflow-x-auto italic">
+           <section className="space-y-8">
+              <h3 className="text-xs font-bold text-white/20 tracking-[0.4em] uppercase">Code Improvement</h3>
+              <div className="bg-white/[0.02] border border-white/10 rounded-[2rem] overflow-hidden divide-y divide-white/5 shadow-2xl">
+                 <div className="p-10 space-y-6">
+                    <span className="text-[10px] font-bold text-burned-coral uppercase tracking-widest bg-burned-coral/10 px-3 py-1 rounded-full border border-burned-coral/20">Old Way</span>
+                    <pre className="font-mono text-sm text-white/40 bg-white/[0.01] p-8 rounded-2xl overflow-x-auto leading-relaxed border border-white/5">
                        {`const result = data.map(item => {
   return data.filter(d => d.id === item.parentId)
-}); // O(n^2) complexity`}
+}); // Very slow`}
                     </pre>
                  </div>
-                 <div className="p-8 space-y-4 bg-neon-accent/5">
-                    <span className="text-[9px] font-mono text-neon-accent font-bold uppercase tracking-widest">AI_OPTIMIZED_SOLUTION</span>
-                    <pre className="font-mono text-xs text-white/90 p-6 rounded-xl overflow-x-auto font-black">
+                 <div className="p-10 space-y-6 bg-neon-accent/[0.03]">
+                    <span className="text-[10px] font-bold text-neon-accent uppercase tracking-widest bg-neon-accent/10 px-3 py-1 rounded-full border border-neon-accent/20">Better Way</span>
+                    <pre className="font-mono text-sm text-white/90 bg-white/[0.05] p-8 rounded-2xl overflow-x-auto font-bold leading-relaxed border border-neon-accent/10 shadow-lg">
                        {`const dataMap = new Map(data.map(d => [d.id, d]));
 const result = data.map(item => dataMap.get(item.parentId));
-// O(n) linear complexity`}
+// Much faster`}
                     </pre>
                  </div>
               </div>
               <button 
                 onClick={() => setCommitted(true)}
-                className={`w-full py-6 font-black uppercase tracking-[0.4em] text-xs transition-all flex items-center justify-center gap-4 ${committed ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' : 'btn-primary'}`}
+                className={`w-full py-6 rounded-2xl font-black uppercase tracking-widest text-xs transition-all duration-300 flex items-center justify-center gap-4 shadow-xl ${committed ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'btn-primary'}`}
               >
-                {committed ? <CheckCircle2 size={18} /> : <Cpu size={18} />}
-                {committed ? "OPTIMIZATION_COMMITTED" : "ACCEPT_&_COMMIT_FIX"}
+                {committed ? <CheckCircle2 size={24} /> : <Cpu size={24} />}
+                {committed ? "APPLIED" : "APPLY IMPROVEMENT"}
               </button>
            </section>
         </div>
 
-        {/* Micro-learning Resources */}
+        {/* Learning Resources */}
         <div className="space-y-12">
-           <section className="space-y-8">
-              <h3 className="label-mono text-white/20 font-bold tracking-widest text-[10px]">MICRO_LEARNING_RESOURCES</h3>
-              <div className="space-y-4">
-                 <div className="card-surface p-10 bg-surface-matte/40 border-white/5 group hover:border-white/20 transition-all cursor-pointer relative overflow-hidden">
-                    <div className="absolute right-0 top-0 w-32 h-32 bg-red-500/5 -mr-16 -mt-16 rounded-full blur-3xl group-hover:bg-red-500/10 transition-all" />
-                    <div className="relative z-10 space-y-6">
-                       <div className="w-12 h-12 bg-white/5 border border-white/5 flex items-center justify-center group-hover:bg-red-500/10 group-hover:text-red-500 transition-all">
-                          <Youtube size={24} />
+           <section className="space-y-10">
+              <h3 className="text-xs font-bold text-white/20 tracking-[0.4em] uppercase">Learning Resources</h3>
+              <div className="space-y-5">
+                 <div className="card-surface p-12 bg-white/[0.02] border-white/10 group hover:border-neon-accent/30 hover:bg-white/[0.05] transition-all duration-300 cursor-pointer relative overflow-hidden rounded-[2.5rem] shadow-xl">
+                    <div className="absolute right-0 top-0 w-48 h-48 bg-neon-accent/5 -mr-24 -mt-24 rounded-full blur-[80px] group-hover:bg-neon-accent/10 transition-all" />
+                    <div className="relative z-10 space-y-8">
+                       <div className="w-16 h-16 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center group-hover:bg-neon-accent/10 group-hover:text-neon-accent transition-all">
+                          <Youtube size={32} />
                        </div>
-                       <div className="space-y-2">
-                          <h4 className="text-2xl font-black italic tracking-tighter uppercase uppercase">Time Complexity Deep-Dive</h4>
-                          <p className="text-xs font-mono text-white/30 uppercase tracking-widest">Starts at 04:22 • Duration: 3:15</p>
+                       <div className="space-y-3">
+                          <h4 className="text-3xl font-black tracking-tight leading-tight">Time Complexity Deep-Dive</h4>
+                          <p className="text-xs font-bold text-white/20 uppercase tracking-widest">3:15 Module • Starts at 04:22</p>
                        </div>
-                       <button className="flex items-center gap-2 text-neon-accent font-black text-[10px] uppercase tracking-widest">
-                          <Play size={12} fill="currentColor" /> LAUNCH_MODULE
+                       <button className="flex items-center gap-3 text-neon-accent font-black text-xs uppercase tracking-[0.2em] group-hover:translate-x-2 transition-transform">
+                          <Play size={16} fill="currentColor" /> Open Lesson
                        </button>
                     </div>
                  </div>
 
-                 <div className="card-surface p-10 bg-surface-matte/40 border-white/5 group hover:border-white/20 transition-all cursor-pointer">
+                 <div className="card-surface p-10 bg-white/[0.01] border-white/5 hover:border-white/20 group transition-all duration-300 cursor-pointer rounded-3xl shadow-lg">
                     <div className="flex justify-between items-center">
-                       <div className="flex gap-6 items-center">
-                          <div className="w-12 h-12 bg-white/5 border border-white/5 flex items-center justify-center group-hover:text-neon-accent transition-all">
-                             <BookOpen size={24} />
+                       <div className="flex gap-8 items-center">
+                          <div className="w-14 h-14 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center group-hover:text-neon-accent transition-all">
+                             <BookOpen size={28} />
                           </div>
                           <div className="space-y-1">
-                             <h4 className="text-lg font-black uppercase italic italic">TC39 Efficiency Docs</h4>
-                             <p className="text-[10px] font-mono text-white/20 uppercase">Technical Documentation Archive</p>
+                             <h4 className="text-xl font-black tracking-tight">Efficiency Guide</h4>
+                             <p className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Documentation</p>
                           </div>
                        </div>
-                       <ChevronRight className="text-white/10 group-hover:text-neon-accent group-hover:translate-x-2 transition-all" />
+                       <ChevronRight className="text-white/10 group-hover:text-neon-accent group-hover:translate-x-2 transition-all" size={24} />
                     </div>
                  </div>
               </div>
            </section>
 
-           <div className="p-8 border border-neon-accent/10 bg-neon-accent/5 rounded-2xl flex items-center justify-between">
-              <div className="flex gap-4 items-center">
-                 <div className="w-10 h-10 rounded-full bg-neon-accent/10 flex items-center justify-center">
-                    <Zap className="text-neon-accent" size={18} />
+           <div className="p-8 border border-neon-accent/10 bg-neon-accent/5 rounded-[2rem] flex items-center justify-between shadow-lg shadow-neon-accent/5">
+              <div className="flex gap-6 items-center">
+                 <div className="w-12 h-12 rounded-2xl bg-neon-accent/10 flex items-center justify-center shadow-neon-accent/10 shadow-inner">
+                    <Zap className="text-neon-accent" size={24} />
                  </div>
-                 <p className="text-[10px] font-mono text-white/40 uppercase font-bold italic tracking-widest">Validation Score Impact: <span className="text-neon-accent">+8.5%</span></p>
+                 <p className="text-xs font-bold text-white/40 uppercase tracking-[0.2em]">Score Increase: <span className="text-neon-accent text-lg ml-2">+8.5%</span></p>
               </div>
            </div>
         </div>

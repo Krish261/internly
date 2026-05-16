@@ -24,99 +24,105 @@ export default function MarketFeed() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-charcoal p-8 lg:p-12 space-y-12">
+    <div className="min-h-screen bg-charcoal p-8 lg:p-12 space-y-16">
       <header className="flex justify-between items-end max-w-7xl mx-auto">
         <div className="space-y-4">
-           <h1 className="text-5xl font-black italic tracking-tighter uppercase">MARKET_SCRAPE</h1>
-           <p className="label-mono opacity-40 italic">"Global job nodes synchronized in real-time..."</p>
+           <h1 className="text-6xl font-black tracking-tight leading-none uppercase">Opportunity<br/><span className="text-neon-accent">Feed</span></h1>
+           <p className="text-white/40 font-medium max-w-md">Discovery top roles perfectly aligned with your expertise and career goals.</p>
         </div>
         <div className="flex gap-4">
            <div className="relative group">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-white/20 group-hover:text-neon-accent transition-colors" size={18} />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-white/20 group-focus-within:text-neon-accent transition-colors" size={20} />
               <input 
-                placeholder="Query Terminal..."
-                className="bg-white/5 border border-white/5 rounded-xl py-4 pl-12 pr-6 text-[10px] font-mono focus:border-neon-accent outline-none w-64 transition-all"
+                placeholder="Search roles..."
+                className="bg-white/[0.04] border border-white/10 rounded-2xl py-4 pl-12 pr-6 text-sm font-medium focus:border-neon-accent focus:bg-white/[0.06] outline-none w-72 transition-all shadow-inner placeholder:text-white/10"
               />
            </div>
-           <button className="btn-secondary px-6">
-              <Filter size={18} />
+           <button className="bg-white/[0.04] p-4 rounded-2xl border border-white/10 hover:bg-white/[0.08] transition-all">
+              <Filter size={20} className="text-white/40" />
            </button>
         </div>
       </header>
 
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-8">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-12">
         {/* Market Stats Sidebar */}
         <div className="space-y-8">
-           <div className="card-surface p-8 bg-surface-matte/40 space-y-6">
-              <h3 className="label-mono uppercase tracking-widest text-[10px] font-bold">Market_Dynamics</h3>
-              <div className="space-y-4">
+           <div className="card-surface p-8 bg-white/[0.02] border-white/5 rounded-3xl space-y-8 shadow-xl">
+              <h3 className="text-[10px] uppercase font-bold tracking-[0.3em] text-white/30">Market Insights</h3>
+              <div className="space-y-6">
                  {[
-                   { label: "Active Nodes", val: "14,842", trend: "+12%" },
-                   { label: "Avg. Salary Index", val: "$142k", trend: "+2.4%" },
-                   { label: "High-Demand Node", val: "ML_ENGINEER", trend: "CRITICAL" }
+                   { label: "Active Roles", val: "14,842", trend: "+12%" },
+                   { label: "Salary Average", val: "$142k", trend: "+2.4%" },
+                   { label: "Hot Skill", val: "React", trend: "HIGH DEMAND" }
                  ].map(stat => (
-                   <div key={stat.label} className="flex justify-between items-baseline border-b border-white/5 pb-2">
-                      <span className="text-[9px] font-mono text-white/30 uppercase">{stat.label}</span>
+                   <div key={stat.label} className="flex justify-between items-end border-b border-white/5 pb-4 last:border-0 transition-all hover:translate-x-1">
+                      <span className="text-[10px] font-bold text-white/20 uppercase tracking-widest">{stat.label}</span>
                       <div className="text-right">
-                         <div className="text-xs font-black italic">{stat.val}</div>
-                         <div className="text-[8px] font-mono text-neon-accent">{stat.trend}</div>
+                         <div className="text-xl font-black tracking-tight">{stat.val}</div>
+                         <div className="text-[10px] font-bold text-neon-accent tracking-widest uppercase">{stat.trend}</div>
                       </div>
                    </div>
                  ))}
               </div>
            </div>
 
-           <div className="card-surface p-8 border-neon-accent/20 bg-neon-accent/5">
-              <h3 className="label-mono text-neon-accent font-bold mb-4">AI_SUGGESTION</h3>
-              <p className="text-[10px] font-mono text-white/40 leading-relaxed italic">"Based on your 92% assessment score in React, Cyberdyne Systems is a priority deployment node."</p>
+           <div className="p-8 bg-neon-accent/5 border border-neon-accent/10 rounded-3xl space-y-4 shadow-lg shadow-neon-accent/5">
+              <div className="flex items-center gap-3">
+                 <Zap className="text-neon-accent" size={20} />
+                 <h3 className="text-[10px] font-black tracking-[0.2em] text-neon-accent uppercase">Personal Match</h3>
+              </div>
+              <p className="text-sm font-medium text-white/50 leading-relaxed">Based on your recent assessment, <span className="text-white font-bold">Cyberdyne Systems</span> matches your skill profile perfectly.</p>
            </div>
         </div>
 
         {/* Job List */}
-        <div className="lg:col-span-3 space-y-4">
+        <div className="lg:col-span-3 space-y-6">
            {loading ? (
-             <div className="flex flex-col items-center justify-center py-40 gap-6">
-                <Loader2 className="animate-spin text-neon-accent" size={48} />
-                <p className="label-mono animate-pulse">Synchronizing Market Data...</p>
+             <div className="flex flex-col items-center justify-center py-48 gap-8">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-neon-accent/10 rounded-full blur-[40px] animate-pulse" />
+                  <Loader2 className="animate-spin text-neon-accent relative z-10" size={56} />
+                </div>
+                <p className="text-xs font-bold uppercase tracking-[0.4em] text-white/20 animate-pulse">Syncing Feed...</p>
              </div>
            ) : (
-             <div className="space-y-4">
+             <div className="space-y-5">
                {jobs.map(job => (
                  <motion.div 
                    key={job.id}
-                   initial={{ opacity: 0, y: 10 }}
+                   initial={{ opacity: 0, y: 20 }}
                    animate={{ opacity: 1, y: 0 }}
                    onClick={() => navigate("/deconstruct")}
-                   className="card-surface p-8 bg-surface-matte/40 flex justify-between items-center group cursor-pointer transition-all hover:bg-white/[0.02]"
+                   className="card-surface p-8 bg-white/[0.03] border-white/10 hover:border-neon-accent/30 hover:bg-white/[0.05] rounded-[2rem] flex justify-between items-center group cursor-pointer transition-all duration-300 shadow-xl"
                  >
-                   <div className="flex items-center gap-8">
-                      <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/5 flex items-center justify-center text-white/20 group-hover:bg-neon-accent/10 group-hover:text-neon-accent transition-all group-hover:border-neon-accent/20">
-                         <Briefcase size={28} />
+                   <div className="flex items-center gap-10">
+                      <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white/20 group-hover:bg-neon-accent/10 group-hover:text-neon-accent transition-all group-hover:border-neon-accent/30">
+                         <Briefcase size={32} />
                       </div>
-                      <div className="space-y-2">
-                         <div className="flex items-center gap-3">
-                            <h3 className="text-2xl font-black italic tracking-tighter uppercase group-hover:text-neon-accent transition-colors">{job.title}</h3>
-                            <div className="px-2 py-0.5 bg-neon-accent/10 border border-neon-accent/20 text-[8px] font-mono text-neon-accent rounded">
+                      <div className="space-y-3">
+                         <div className="flex items-center gap-4">
+                            <h3 className="text-2xl font-black tracking-tight group-hover:text-neon-accent transition-colors">{job.title}</h3>
+                            <div className="px-3 py-1 bg-neon-accent/10 border border-neon-accent/20 text-[10px] font-black text-neon-accent rounded-full tracking-wider">
                                {job.match}% MATCH
                             </div>
                          </div>
-                         <div className="flex gap-6 text-[10px] font-mono text-white/30 uppercase tracking-widest">
-                            <span className="flex items-center gap-2"><Globe size={12} /> {job.company}</span>
-                            <span>•</span>
-                            <span>{job.location}</span>
-                            <span>•</span>
-                            <span className="text-white/60">{job.salary}</span>
+                         <div className="flex gap-6 text-[11px] font-bold text-white/30 uppercase tracking-widest items-center">
+                            <span className="flex items-center gap-2 transition-colors group-hover:text-white/50"><Globe size={14} /> {job.company}</span>
+                            <span className="w-1 h-1 bg-white/10 rounded-full" />
+                            <span className="transition-colors group-hover:text-white/50">{job.location}</span>
+                            <span className="w-1 h-1 bg-white/10 rounded-full" />
+                            <span className="text-neon-accent font-black">{job.salary}</span>
                          </div>
                       </div>
                    </div>
-                   <div className="flex items-center gap-6">
-                      <div className="text-right hidden md:block">
-                         <p className="text-[9px] font-mono text-white/20 uppercase">DECONSTRUCTION_READY</p>
-                         <p className="text-[10px] font-mono text-neon-accent font-bold">1-TAP_PARSE</p>
+                   <div className="flex items-center gap-8">
+                      <div className="text-right hidden md:block space-y-1">
+                         <p className="text-[10px] font-bold text-white/10 uppercase tracking-widest group-hover:text-white/30 transition-colors">Perfect Match</p>
+                         <p className="text-xs font-black text-neon-accent uppercase tracking-widest drop-shadow-sm">Analyze Role</p>
                       </div>
-                      <button className="w-12 h-12 rounded-xl bg-white/5 border border-white/5 flex items-center justify-center group-hover:border-neon-accent group-hover:bg-neon-accent group-hover:text-charcoal transition-all">
-                         <ChevronRight size={24} />
-                      </button>
+                      <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-neon-accent group-hover:bg-neon-accent group-hover:text-charcoal transition-all shadow-lg group-hover:shadow-neon-accent/20">
+                         <ChevronRight size={28} />
+                      </div>
                    </div>
                  </motion.div>
                ))}

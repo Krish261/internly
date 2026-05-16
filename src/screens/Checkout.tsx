@@ -73,81 +73,89 @@ export default function Checkout() {
   };
 
   return (
-    <div className="p-8 lg:p-12 max-w-7xl mx-auto space-y-16">
-      <header className="text-center space-y-4 max-w-2xl mx-auto">
-        <h1 className="text-5xl heading-bold">SELECT YOUR<br/><span className="text-neon-accent">PLAN</span></h1>
-        <p className="label-mono text-white/40 leading-relaxed italic">"Accelerate your career with the power of artificial intelligence."</p>
+    <div className="p-8 lg:p-12 max-w-7xl mx-auto space-y-20">
+      <header className="text-center space-y-6 max-w-3xl mx-auto">
+        <h1 className="text-6xl font-black tracking-tight leading-none uppercase">Elevate Your<br/><span className="text-neon-accent">Career</span></h1>
+        <p className="text-lg text-white/40 font-medium max-w-xl mx-auto">Unlock the tools you need to land your dream job with AI-powered insights and automation.</p>
       </header>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
         {plans.map((plan) => (
           <motion.div 
             key={plan.id}
-            whileHover={{ y: -10 }}
-            className={`card-surface relative flex flex-col p-8 ${plan.border} ${plan.accent}`}
+            whileHover={{ y: -12 }}
+            className={`card-surface relative flex flex-col p-12 transition-all duration-300 rounded-[3rem] ${plan.border} ${plan.accent} shadow-2xl relative overflow-hidden`}
           >
             {plan.isPopular && (
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-white text-black text-[9px] font-black uppercase tracking-widest rounded">
-                RECOMMENDED
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 px-6 py-2 bg-neon-accent text-charcoal text-[10px] font-black uppercase tracking-widest rounded-b-2xl shadow-lg">
+                Most Popular
               </div>
             )}
 
-            <div className="mb-8">
-              <h3 className={`text-2xl font-black heading-bold italic uppercase ${plan.color}`}>{plan.name}</h3>
-              <p className="text-[10px] font-mono text-white/30 uppercase mt-1">{plan.description}</p>
+            <div className="mb-10 space-y-3">
+              <h3 className={`text-3xl font-black tracking-tight leading-none uppercase ${plan.color}`}>{plan.name}</h3>
+              <p className="text-[11px] font-bold text-white/30 uppercase tracking-widest">{plan.description}</p>
             </div>
 
-            <div className="mb-10">
-              <div className="flex items-baseline gap-2">
-                <span className="text-4xl font-black italic">₹{plan.price}</span>
-                <span className="text-[10px] font-mono opacity-40 uppercase">/ Total</span>
+            <div className="mb-12">
+              <div className="flex items-baseline gap-3">
+                <span className="text-5xl font-black tracking-tighter">₹{plan.price}</span>
+                <span className="text-xs font-bold opacity-20 uppercase tracking-widest">/ Total</span>
               </div>
             </div>
 
-            <div className="flex-1 space-y-4 mb-10">
+            <div className="flex-1 space-y-5 mb-12">
               {plan.features.map(f => (
-                <div key={f} className="flex items-center gap-3">
-                  <Check size={16} className={plan.id === 'Gold' ? 'text-neon-accent' : 'text-white/20'} />
-                  <span className="text-xs font-mono text-white/50 uppercase tracking-tight">{f}</span>
+                <div key={f} className="flex items-start gap-4">
+                  <div className={`mt-1 flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center ${plan.id === 'Gold' ? 'bg-neon-accent/10 text-neon-accent' : 'bg-white/5 text-white/20'}`}>
+                    <Check size={12} strokeWidth={4} />
+                  </div>
+                  <span className="text-[13px] font-medium text-white/60 leading-snug">{f}</span>
                 </div>
               ))}
             </div>
 
             <button 
               onClick={() => handleUpgrade(plan.id)}
-              className={`w-full py-5 text-sm font-black uppercase tracking-[0.2em] transition-all
-                ${plan.id === 'Gold' ? 'btn-primary shadow-2xl' : 
-                  plan.id === 'Silver' ? 'bg-white text-black hover:bg-white/80' : 
-                  'border border-white/10 hover:bg-white/5'}
+              className={`w-full py-6 rounded-[2rem] text-xs font-black uppercase tracking-[0.2em] transition-all duration-300 shadow-xl
+                ${plan.id === 'Gold' ? 'btn-primary shadow-neon-accent/20' : 
+                  plan.id === 'Silver' ? 'bg-white text-charcoal hover:bg-white/90 shadow-white/5' : 
+                  'bg-white/[0.04] border border-white/5 hover:bg-white/[0.08] text-white/60'}
               `}
             >
-              {tier === plan.id ? "YOUR PLAN" : "UPGRADE NOW"}
+              {tier === plan.id ? "ACTIVE" : "Select Plan"}
             </button>
           </motion.div>
         ))}
       </div>
 
       {/* Security Trust Bar */}
-      <footer className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-12 border-t border-white/5">
-        <div className="flex items-center gap-4">
-           <ShieldCheck className="text-neon-accent" size={32} />
+      <footer className="grid grid-cols-1 md:grid-cols-3 gap-12 pt-16 border-t border-white/10">
+        <div className="flex items-center gap-6">
+           <div className="w-14 h-14 bg-neon-accent/10 rounded-2xl flex items-center justify-center border border-neon-accent/20">
+              <ShieldCheck className="text-neon-accent" size={28} />
+           </div>
            <div>
-              <p className="label-mono text-xs">Secure Payment</p>
-              <p className="text-[10px] opacity-40 font-mono uppercase">256-bit AES Encryption</p>
+              <p className="text-sm font-bold uppercase tracking-widest text-white/80">Secure & Private</p>
+              <p className="text-[10px] font-bold opacity-30 uppercase tracking-tight">256-bit AES Encryption</p>
            </div>
         </div>
-        <div className="flex items-center gap-4">
-           <CreditCard className="text-neon-accent" size={32} />
+        <div className="flex items-center gap-6">
+           <div className="w-14 h-14 bg-neon-accent/10 rounded-2xl flex items-center justify-center border border-neon-accent/20">
+              <CreditCard className="text-neon-accent" size={28} />
+           </div>
            <div>
-              <p className="label-mono text-xs">Pricing</p>
-              <p className="text-[10px] opacity-40 font-mono uppercase">Transparent Fee Structure</p>
+              <p className="text-sm font-bold uppercase tracking-widest text-white/80">Simple Pricing</p>
+              <p className="text-[10px] font-bold opacity-30 uppercase tracking-tight">Transparent Fee Structure</p>
            </div>
         </div>
-        <div className="flex items-center gap-4">
-           <Star className="text-neon-accent" size={32} />
+        <div className="flex items-center gap-6">
+           <div className="w-14 h-14 bg-neon-accent/10 rounded-2xl flex items-center justify-center border border-neon-accent/20">
+              <Zap className="text-neon-accent" size={28} />
+           </div>
            <div>
-              <p className="label-mono text-xs">Optimized</p>
-              <p className="text-[10px] opacity-40 font-mono uppercase">Powered by AI</p>
+              <p className="text-sm font-bold uppercase tracking-widest text-white/80">AI Enhanced</p>
+              <p className="text-[10px] font-bold opacity-30 uppercase tracking-tight">Real-time market insights</p>
            </div>
         </div>
       </footer>

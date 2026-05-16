@@ -34,8 +34,8 @@ export default function Onboarding() {
           phone: "+91 99XXXXXX21"
         },
         background: formData.background,
-        hardSkills: skills.hardSkills,
-        softSkills: skills.softSkills,
+        hardSkills: skills?.hardSkills || [],
+        softSkills: skills?.softSkills || [],
         assessments: {}
       });
       setTimeout(() => navigate("/dashboard"), 3000);
@@ -59,53 +59,53 @@ export default function Onboarding() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4 py-20 overflow-hidden bg-charcoal bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-neon-accent/5 via-charcoal to-charcoal">
-      <div className="fixed top-0 left-0 w-full h-[2px] bg-white/5 z-50">
+      <div className="fixed top-0 left-0 w-full h-[5px] bg-white/5 z-50">
         <motion.div 
           initial={{ width: 0 }}
           animate={{ width: `${progressMap[step]}%` }}
-          className="h-full bg-neon-accent shadow-[0_0_15px_rgba(0,255,204,0.5)]"
+          className="h-full bg-neon-accent shadow-[0_0_15px_rgba(245,158,11,0.5)]"
         />
       </div>
 
       <AnimatePresence mode="wait">
         <motion.div
           key={step}
-          initial={{ x: 30, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          exit={{ x: -30, opacity: 0 }}
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: -20, opacity: 0 }}
           className="w-full max-w-2xl px-6"
         >
           {step === "identity" && (
             <div className="space-y-12">
                <div className="text-center space-y-4">
-                 <div className="w-16 h-16 bg-neon-accent/10 border border-neon-accent/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                    <User className="text-neon-accent" size={32} />
+                 <div className="w-20 h-20 bg-neon-accent/10 border border-neon-accent/20 rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-[0_10px_30px_rgba(245,158,11,0.1)]">
+                    <User className="text-neon-accent" size={40} />
                  </div>
-                 <h2 className="text-5xl heading-bold italic uppercase tracking-tighter">WELCOME</h2>
-                 <p className="label-mono opacity-50 uppercase tracking-widest">Identify yourself to continue</p>
+                 <h2 className="text-5xl font-black tracking-tight">Create Account</h2>
+                 <p className="text-white/40 font-medium">Join thousand of students building their future</p>
                </div>
 
-               <div className="space-y-4 max-w-md mx-auto">
-                 <div className="flex flex-col gap-3">
-                   <button onClick={() => setStep("intent")} className="w-full bg-white text-charcoal py-4 font-black uppercase tracking-widest flex items-center justify-center gap-3 hover:brightness-90 transition-all">
-                      <img src="https://www.google.com/favicon.ico" className="w-3 h-3" alt="Google" />
-                      Sign in with Google
-                   </button>
-                   <button onClick={() => setStep("intent")} className="w-full bg-[#0077b5] text-white py-4 font-black uppercase tracking-widest flex items-center justify-center gap-3 hover:brightness-110 transition-all">
-                      <Linkedin className="w-4 h-4" />
-                      Sign in with LinkedIn
-                   </button>
+               <div className="space-y-6 max-w-md mx-auto">
+                 <div className="flex flex-col gap-4">
+                    <button onClick={() => setStep("intent")} className="w-full bg-white text-charcoal py-4.5 rounded-2xl font-bold tracking-wide flex items-center justify-center gap-3 hover:brightness-95 transition-all shadow-xl">
+                       <img src="https://www.google.com/favicon.ico" className="w-4 h-4" alt="Google" />
+                       Continue with Google
+                    </button>
+                    <button onClick={() => setStep("intent")} className="w-full bg-[#0077b5] text-white py-4.5 rounded-2xl font-bold tracking-wide flex items-center justify-center gap-3 hover:brightness-110 transition-all shadow-xl">
+                       <Linkedin className="w-4 h-4" />
+                       Continue with LinkedIn
+                    </button>
                  </div>
 
-                 <div className="flex items-center gap-4 py-4">
-                   <div className="flex-1 h-px bg-white/5" />
-                   <span className="text-[10px] font-mono text-white/20">OR SIGN IN MANUALLY</span>
-                   <div className="flex-1 h-px bg-white/5" />
+                 <div className="flex items-center gap-4 py-6">
+                    <div className="flex-1 h-px bg-white/5" />
+                    <span className="text-[10px] font-bold text-white/20 uppercase tracking-[0.2em]">OR USE EMAIL</span>
+                    <div className="flex-1 h-px bg-white/5" />
                  </div>
 
                  <input 
-                   placeholder="Enter your Email"
-                   className="terminal-input w-full p-4 mb-4"
+                   placeholder="your@email.com"
+                   className="w-full bg-white/5 border border-white/10 rounded-2xl p-5 focus:border-neon-accent focus:bg-white/10 outline-none transition-all text-lg font-medium"
                    value={formData.name}
                    onChange={e => setFormData({...formData, name: e.target.value})}
                  />
@@ -113,9 +113,9 @@ export default function Onboarding() {
                  <button 
                    disabled={!formData.name}
                    onClick={() => setStep("intent")}
-                   className="btn-primary w-full"
+                   className="btn-primary w-full py-5 rounded-2xl"
                  >
-                   CONTINUE
+                   LET'S GO
                  </button>
                </div>
             </div>
@@ -123,26 +123,26 @@ export default function Onboarding() {
 
           {step === "intent" && (
             <div className="space-y-12">
-              <div className="space-y-4">
-                 <h1 className="text-5xl heading-bold italic uppercase tracking-tighter">YOUR GOAL</h1>
-                 <p className="label-mono text-white/40">Select your primary objective.</p>
+              <div className="space-y-4 text-center">
+                 <h1 className="text-5xl font-black tracking-tight">What's your goal?</h1>
+                 <p className="text-white/40 font-medium">We'll tailor your experience of your objective</p>
               </div>
-              <div className="grid grid-cols-1 gap-4">
+              <div className="grid grid-cols-1 gap-5">
                 {[
-                  { id: "intern", label: "I need an internship", desc: "Starting out in the tech world." },
-                  { id: "pivot", label: "I want to pivot career", desc: "Changing my career path." },
-                  { id: "pro", label: "I want to level up", desc: "Growing in my current role." }
+                  { id: "intern", label: "I need an internship", desc: "Starting my journey in the tech world." },
+                  { id: "pivot", label: "I want to pivot career", desc: "Moving from another field into tech." },
+                  { id: "pro", label: "I want to level up", desc: "Growing and advancing in my current role." }
                 ].map(i => (
                   <button 
                     key={i.id}
                     onClick={() => { setFormData({ ...formData, intent: i.id }); setStep("stage"); }}
-                    className="w-full card-surface text-left group hover:border-neon-accent/40 bg-surface-matte/40 p-8 flex justify-between items-center transition-all"
+                    className="w-full card-surface text-left group hover:bg-neon-accent/5 hover:border-neon-accent/30 p-8 flex justify-between items-center transition-all duration-300"
                   >
                     <div>
-                      <h3 className="text-2xl font-black italic tracking-tighter group-hover:text-neon-accent transition-colors uppercase">{i.label}</h3>
-                      <p className="text-[11px] font-mono text-white/30 uppercase mt-1 italic">{i.desc}</p>
+                      <h3 className="text-2xl font-bold group-hover:text-neon-accent transition-colors">{i.label}</h3>
+                      <p className="text-sm font-medium text-white/30 mt-2">{i.desc}</p>
                     </div>
-                    <Target className="text-white/10 group-hover:text-neon-accent transition-all" />
+                    <Target className="text-white/10 group-hover:text-neon-accent transition-all group-hover:scale-110" />
                   </button>
                 ))}
               </div>
@@ -151,31 +151,31 @@ export default function Onboarding() {
 
           {step === "stage" && (
             <div className="space-y-12">
-              <div className="space-y-4">
-                 <h1 className="text-5xl heading-bold italic uppercase tracking-tighter">YOUR STATUS</h1>
-                 <p className="label-mono text-white/40">Select your current stage.</p>
+              <div className="space-y-4 text-center">
+                 <h1 className="text-5xl font-black tracking-tight">Where are you now?</h1>
+                 <p className="text-white/40 font-medium">This helps us find the most relevant opportunities</p>
               </div>
-              <div className="grid grid-cols-1 gap-4">
+              <div className="grid grid-cols-1 gap-5">
                 {[
-                  { id: "academic", label: "STUDENT", desc: "Currently studying in college/university." },
-                  { id: "fresh", label: "RECENT GRADUATE", desc: "New to the workforce, 0-1 years exp." },
-                  { id: "core", label: "PROFESSIONAL", desc: "Experienced industry professional." }
+                  { id: "academic", label: "Student", desc: "Currently in college or university." },
+                  { id: "fresh", label: "Recent Graduate", desc: "New to the workforce (0-1 yrs experience)." },
+                  { id: "core", label: "Professional", desc: "Currently working and looking for growth." }
                 ].map(s => (
                   <button 
                     key={s.id}
                     onClick={() => { setFormData({ ...formData, stage: s.id }); setStep("role"); }}
-                    className="w-full card-surface text-left group hover:border-white/20 bg-surface-matte/40 p-10 flex justify-between items-center transition-all"
+                    className="w-full card-surface text-left group hover:bg-white/5 p-10 flex justify-between items-center transition-all duration-300"
                   >
                     <div className="flex items-center gap-8">
-                      <div className="w-14 h-14 rounded-xl bg-white/5 border border-white/5 flex items-center justify-center text-white/20 group-hover:text-white transition-colors">
-                         <User size={28} />
+                      <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/5 flex items-center justify-center text-white/20 group-hover:bg-white/10 group-hover:text-white transition-all">
+                         <User size={32} />
                       </div>
                       <div>
-                        <h3 className="text-2xl font-black italic tracking-tighter uppercase">{s.label}</h3>
-                        <p className="text-[11px] font-mono text-white/30 uppercase mt-1 italic">{s.desc}</p>
+                        <h3 className="text-2xl font-bold">{s.label}</h3>
+                        <p className="text-sm font-medium text-white/30 mt-2">{s.desc}</p>
                       </div>
                     </div>
-                    <ArrowRight className="text-white/20 group-hover:text-white transition-all translate-x-2" />
+                    <ArrowRight className="text-white/20 group-hover:text-white transition-all group-hover:translate-x-2" />
                   </button>
                 ))}
               </div>
@@ -185,15 +185,15 @@ export default function Onboarding() {
           {step === "role" && (
             <div className="space-y-12 text-center">
                <div className="space-y-4 mb-16">
-                  <h1 className="text-5xl heading-bold italic uppercase tracking-tighter">TARGET ROLE</h1>
-                  <p className="label-mono text-white/40 italic">Select your ideal job title.</p>
+                  <h1 className="text-5xl font-black tracking-tight">Target Role</h1>
+                  <p className="text-white/40 font-medium">Select your dream job title</p>
                </div>
                <div className="grid grid-cols-2 gap-4">
-                 {["Product Management", "Software Development", "UI/UX Design", "Marketing & Analytics", "Sales & Business", "Data Engineering"].map(r => (
+                 {["Product Management", "Software Development", "UI/UX Design", "Marketing & Tech", "Sales & Business", "Data Engineering"].map(r => (
                    <button 
                      key={r}
                      onClick={() => { setFormData({ ...formData, role: r }); setStep("preferences"); }}
-                     className="card-surface p-8 text-center bg-surface-matte/40 hover:border-neon-accent/50 transition-all font-black text-xs uppercase tracking-[0.2em] italic"
+                     className="card-surface p-8 text-center bg-surface-matte/40 hover:bg-neon-accent/5 hover:border-neon-accent/40 transition-all font-bold text-sm tracking-widest"
                    >
                      {r}
                    </button>
@@ -204,19 +204,19 @@ export default function Onboarding() {
 
           {step === "preferences" && (
             <div className="space-y-12">
-               <div className="space-y-4">
-                  <h1 className="text-5xl heading-bold italic uppercase tracking-tighter">PREFERENCES</h1>
-                  <p className="label-mono text-white/40 italic">Select your preferred location and culture.</p>
+               <div className="space-y-4 text-center">
+                  <h1 className="text-5xl font-black tracking-tight">Preferences</h1>
+                  <p className="text-white/40 font-medium">Tell us about your ideal work environment</p>
                </div>
                <div className="space-y-8">
                   <div className="space-y-4">
-                    <label className="text-[10px] font-mono text-white/20 uppercase tracking-widest font-bold">Preferred Region</label>
+                    <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Preferred Region</label>
                     <div className="grid grid-cols-2 gap-3">
                       {["India/Asia", "Global Remote", "United States", "Europe/UK"].map(reg => (
                         <button 
                           key={reg}
                           onClick={() => setFormData({ ...formData, region: reg })}
-                          className={`p-5 text-center border font-black text-[10px] tracking-widest uppercase transition-all ${formData.region === reg ? 'bg-neon-accent text-charcoal border-neon-accent shadow-glow' : 'border-white/5 bg-white/5 text-white/30 hover:border-white/20'}`}
+                          className={`p-5 rounded-2xl text-center border font-bold text-xs tracking-widest uppercase transition-all ${formData.region === reg ? 'bg-neon-accent text-charcoal border-neon-accent shadow-lg shadow-neon-accent/20' : 'border-white/5 bg-white/5 text-white/30 hover:border-white/20'}`}
                         >
                           {reg}
                         </button>
@@ -225,13 +225,13 @@ export default function Onboarding() {
                   </div>
 
                   <div className="space-y-4">
-                    <label className="text-[10px] font-mono text-white/20 uppercase tracking-widest font-bold">Culture Optimization</label>
+                    <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Work Culture</label>
                     <div className="flex flex-wrap gap-2">
-                       {["Fast-Paced Startup", "Fortune 500", "Work-Life Balance", "High Growth", "Product-First"].map(c => (
+                       {["Fast Startup", "Big Tech", "Flexible", "High Growth", "Modern"].map(c => (
                          <button 
                           key={c}
                           onClick={() => setFormData({ ...formData, culture: c })}
-                          className={`px-4 py-2 text-[9px] font-mono border rounded-full transition-all ${formData.culture === c ? 'bg-white text-charcoal border-white font-black' : 'border-white/10 text-white/30 hover:text-white'}`}
+                          className={`px-6 py-2.5 text-[11px] font-bold border rounded-full transition-all ${formData.culture === c ? 'bg-white text-charcoal border-white' : 'border-white/10 text-white/40 hover:text-white'}`}
                          >
                            {c}
                          </button>
@@ -242,7 +242,7 @@ export default function Onboarding() {
                   <button 
                     disabled={!formData.region}
                     onClick={() => setStep("background")}
-                    className="btn-primary w-full py-6 mt-8"
+                    className="btn-primary w-full py-6 mt-8 rounded-2xl"
                   >
                     CONTINUE TO PROFILE
                   </button>
@@ -252,27 +252,27 @@ export default function Onboarding() {
 
           {step === "background" && (
             <div className="space-y-12">
-               <div className="space-y-4">
-                  <h1 className="text-5xl heading-bold italic uppercase tracking-tighter">UPLOAD DATA</h1>
-                  <p className="label-mono text-white/40 italic">Create your profile using existing resumes or summaries.</p>
+               <div className="space-y-4 text-center">
+                  <h1 className="text-5xl font-black tracking-tight">Upload Resume</h1>
+                  <p className="text-white/40 font-medium">We'll use this to build your initial skill map</p>
                </div>
                <div className="space-y-8">
-                  <div className="p-20 border-2 border-dashed border-white/5 bg-white/[0.02] rounded-3xl flex flex-col items-center justify-center text-center gap-6 group hover:bg-white/[0.04] hover:border-neon-accent/30 transition-all cursor-pointer">
-                     <Upload className="text-white/10 group-hover:text-neon-accent transition-colors" size={48} />
+                  <div className="p-20 border-2 border-dashed border-white/10 bg-white/5 rounded-3xl flex flex-col items-center justify-center text-center gap-6 group hover:bg-neon-accent/5 hover:border-neon-accent/30 transition-all cursor-pointer">
+                     <Upload className="text-white/20 group-hover:text-neon-accent group-hover:scale-110 transition-all" size={56} />
                      <div className="space-y-1">
-                        <span className="text-xs font-black uppercase tracking-widest opacity-40">Upload Your Resume</span>
-                        <p className="text-[9px] font-mono text-white/20">Supports PDF, DOCX, TXT</p>
+                        <span className="text-sm font-bold text-white/60">Upload PDF or DOCX</span>
+                        <p className="text-[10px] font-medium text-white/20">Max file size 5MB</p>
                      </div>
                   </div>
 
                   <div className="relative">
                     <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-white/5" /></div>
-                    <div className="relative flex justify-center text-[8px] font-mono uppercase bg-charcoal px-4 text-white/20 tracking-[0.5em]">OR TYPE YOUR SUMMARY</div>
+                    <div className="relative flex justify-center text-[10px] font-bold uppercase bg-charcoal px-6 text-white/20 tracking-widest">OR PASTE TEXT</div>
                   </div>
 
                   <textarea 
-                    placeholder="Paste your resume text or a short summary of your background here..."
-                    className="terminal-input w-full h-40 font-serif normal-case p-6 text-base italic leading-relaxed"
+                    placeholder="Paste your resume or a short summary about yourself..."
+                    className="w-full bg-white/5 border border-white/10 rounded-2xl h-40 p-6 text-lg focus:border-neon-accent focus:bg-white/10 outline-none transition-all leading-relaxed font-medium"
                     value={formData.background}
                     onChange={e => setFormData({...formData, background: e.target.value})}
                   />
@@ -280,9 +280,9 @@ export default function Onboarding() {
                   <button 
                     disabled={!formData.background}
                     onClick={handleFinish}
-                    className="btn-primary w-full py-6 mt-4 shadow-[0_0_50px_rgba(0,255,204,0.1)]"
+                    className="btn-primary w-full py-6 mt-4 rounded-2xl shadow-xl"
                   >
-                    CREATE MY PROFILE
+                    BUILD MY ACCOUNT
                   </button>
                </div>
             </div>
@@ -291,21 +291,21 @@ export default function Onboarding() {
           {step === "calculating" && (
             <motion.div 
               key="calc"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
               className="flex flex-col items-center gap-12"
             >
               <div className="relative">
-                <div className="absolute -inset-24 bg-neon-accent/5 rounded-full animate-pulse" />
-                <div className="absolute -inset-16 border border-neon-accent/20 rounded-full animate-spin [animation-duration:5s]" />
-                <div className="absolute -inset-8 border border-neon-accent/10 rounded-full animate-spin [animation-duration:3s]" />
-                <Brain className="text-neon-accent relative z-10" size={120} />
+                <div className="absolute -inset-24 bg-neon-accent/10 rounded-full animate-pulse" />
+                <div className="absolute -inset-16 border border-neon-accent/30 rounded-full animate-spin [animation-duration:8s]" />
+                <div className="absolute -inset-8 border border-neon-accent/20 rounded-full animate-spin [animation-duration:5s]" />
+                <Brain className="text-neon-accent relative z-10" size={140} />
               </div>
               <div className="text-center space-y-4">
-                 <h2 className="text-2xl font-black italic tracking-[0.2em] text-neon-accent text-glow uppercase">PREPARING YOUR DASHBOARD</h2>
-                 <div className="space-y-1">
-                    <p className="label-mono text-white/40 uppercase tracking-[0.3em] font-bold text-[10px] animate-pulse italic">Analyzing your profile...</p>
-                    <p className="text-[9px] font-mono text-white/10 uppercase italic">Organizing your professional data</p>
+                 <h2 className="text-3xl font-black tracking-tight text-neon-accent text-glow">Personalizing your experience</h2>
+                 <div className="space-y-2">
+                    <p className="text-sm font-medium text-white/40 animate-pulse">Analyzing your background...</p>
+                    <p className="text-[10px] font-bold text-white/10 uppercase tracking-widest">Creating your skill matrix</p>
                  </div>
               </div>
             </motion.div>

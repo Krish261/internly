@@ -19,24 +19,24 @@ export default function AICritique() {
     <div className="h-screen bg-charcoal flex flex-col overflow-hidden">
       <header className="p-8 border-b border-white/5 flex justify-between items-center bg-charcoal/80 backdrop-blur-md">
         <div className="space-y-1">
-           <div className="flex items-center gap-2 text-neon-accent font-mono text-[9px] font-bold uppercase tracking-widest">
-              <Zap size={10} /> Neural_Critique_Engine // v4.2
+           <div className="flex items-center gap-2 text-neon-accent font-bold text-[10px] uppercase tracking-[0.3em]">
+              <Zap size={14} /> AI Review Engine
            </div>
-           <h1 className="text-3xl font-black italic tracking-tighter uppercase">AI_CRITIQUE_CANVAS</h1>
+           <h1 className="text-4xl font-black tracking-tight leading-none uppercase">Portfolio Critique</h1>
         </div>
         <div className="flex gap-4">
-           <button onClick={() => navigate("/portfolio")} className="px-6 py-3 border border-white/5 text-[10px] font-mono uppercase tracking-widest hover:bg-white hover:text-charcoal transition-all">BACK_TO_HUB</button>
-           <button className="btn-primary px-8 py-3 text-xs">REFRESH_SCAN</button>
+           <button onClick={() => navigate("/portfolio")} className="px-6 py-3 rounded-xl border border-white/10 text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-charcoal transition-all">Back to Hub</button>
+           <button className="btn-primary px-10 py-3 rounded-xl text-xs shadow-lg shadow-neon-accent/10">Refresh Scan</button>
         </div>
       </header>
 
       <div className="flex-1 flex overflow-hidden">
         {/* Left Side: Preview Canvas */}
         <div className="flex-1 relative bg-black/40 overflow-hidden cursor-crosshair group">
-           <div className="absolute inset-0 flex items-center justify-center opacity-40 group-hover:opacity-100 transition-opacity">
-              <div className="w-full max-w-4xl aspect-video bg-charcoal border border-white/10 rounded-xl relative shadow-2xl overflow-hidden">
+           <div className="absolute inset-0 flex items-center justify-center opacity-40 group-hover:opacity-100 transition-opacity duration-700">
+              <div className="w-full max-w-4xl aspect-video bg-white/[0.02] border border-white/10 rounded-3xl relative shadow-[0_30px_100px_rgba(0,0,0,0.5)] overflow-hidden">
                  {/* Mock Content */}
-                 <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=2000')] bg-cover opacity-20" />
+                 <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=2000')] bg-cover opacity-10" />
                  
                  {/* Interactive Pins */}
                  {pins.map(pin => (
@@ -46,59 +46,59 @@ export default function AICritique() {
                      animate={{ scale: 1 }}
                      style={{ left: pin.x, top: pin.y }}
                      onClick={() => setActivePin(pin.id)}
-                     className={`absolute -translate-x-1/2 -translate-y-1/2 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all shadow-glow ${activePin === pin.id ? 'bg-neon-accent border-neon-accent scale-150' : 'bg-neon-accent/10 border-neon-accent hover:bg-neon-accent/30'}`}
+                     className={`absolute -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full border-2 flex items-center justify-center transition-all ${activePin === pin.id ? 'bg-neon-accent border-neon-accent scale-125 shadow-[0_0_30px_rgba(245,158,11,0.5)]' : 'bg-neon-accent/20 border-neon-accent hover:bg-neon-accent/40 shadow-xl'}`}
                    >
-                     <div className="w-1.5 h-1.5 rounded-full bg-neon-accent" />
+                     <div className="w-2 h-2 rounded-full bg-neon-accent shadow-[0_0_10px_rgba(245,158,11,1)]" />
                    </motion.button>
                  ))}
               </div>
            </div>
            
            <div className="absolute bottom-10 left-10 flex gap-4">
-              <div className="px-4 py-2 bg-black/60 backdrop-blur-md rounded-full border border-white/5 text-[9px] font-mono uppercase tracking-widest flex items-center gap-2">
-                 <MousePointer2 size={12} className="text-neon-accent" /> Toggle Interactive Pins [ON]
+              <div className="px-6 py-3 bg-black/60 backdrop-blur-md rounded-2xl border border-white/10 text-[10px] font-bold uppercase tracking-widest flex items-center gap-3">
+                 <MousePointer2 size={14} className="text-neon-accent" /> Interactive Pins ON
               </div>
-              <div className="px-4 py-2 bg-black/60 backdrop-blur-md rounded-full border border-white/5 text-[9px] font-mono uppercase tracking-widest flex items-center gap-2">
-                 <Maximize2 size={12} className="text-neon-accent" /> Focus View
+              <div className="px-6 py-3 bg-black/60 backdrop-blur-md rounded-2xl border border-white/10 text-[10px] font-bold uppercase tracking-widest flex items-center gap-3">
+                 <Maximize2 size={14} className="text-neon-accent" /> Fullscreen Mode
               </div>
            </div>
         </div>
 
         {/* Right Side: Feedback Feed */}
-        <div className="w-[450px] border-l border-white/5 bg-surface-matte/40 overflow-y-auto p-12 custom-scrollbar space-y-12">
-           <div className="space-y-4">
-              <h3 className="label-mono text-white/30 font-bold tracking-widest text-[10px]">SYSTEM_TEARDOWN</h3>
+        <div className="w-[450px] border-l border-white/5 bg-white/[0.01] overflow-y-auto p-12 custom-scrollbar space-y-12">
+           <div className="space-y-6">
+              <h3 className="text-xs font-bold text-white/30 tracking-[0.4em] uppercase">Scan Summary</h3>
               <div className="flex gap-4">
-                 <div className="flex-1 p-4 bg-burned-coral/5 border border-burned-coral/20 rounded-xl">
-                    <p className="text-2xl font-black italic text-burned-coral">03</p>
-                    <p className="text-[8px] font-mono uppercase opacity-40">Critical_Errors</p>
+                 <div className="flex-1 p-6 bg-burned-coral/5 border border-burned-coral/20 rounded-2xl">
+                    <p className="text-3xl font-black text-burned-coral">03</p>
+                    <p className="text-[10px] font-bold uppercase tracking-widest opacity-40 mt-1">Issues</p>
                  </div>
-                 <div className="flex-1 p-4 bg-neon-accent/5 border border-neon-accent/20 rounded-xl">
-                    <p className="text-2xl font-black italic text-neon-accent">92</p>
-                    <p className="text-[8px] font-mono uppercase opacity-40">Optimizations</p>
+                 <div className="flex-1 p-6 bg-neon-accent/5 border border-neon-accent/20 rounded-2xl">
+                    <p className="text-3xl font-black text-neon-accent">92</p>
+                    <p className="text-[10px] font-bold uppercase tracking-widest opacity-40 mt-1">Wins</p>
                  </div>
               </div>
            </div>
 
-           <div className="space-y-4">
+           <div className="space-y-6">
               {pins.map(pin => (
                 <div 
                   key={pin.id}
-                  className={`card-surface p-8 space-y-6 transition-all border-white/5 ${activePin === pin.id ? 'border-neon-accent bg-neon-accent/5 ring-1 ring-neon-accent/20' : 'bg-black/20 hover:border-white/10'}`}
+                  className={`card-surface p-8 space-y-6 transition-all duration-300 rounded-3xl ${activePin === pin.id ? 'bg-neon-accent/[0.08] border-neon-accent/40 shadow-2xl scale-[1.02]' : 'bg-white/[0.02] border-white/10 hover:bg-white/[0.04]'}`}
                 >
                    <div className="flex justify-between items-center">
-                      <span className={`text-[10px] font-mono font-black uppercase tracking-widest ${pin.severity === 'Critical' ? 'text-burned-coral' : 'text-neon-accent'}`}>
-                         [{pin.severity.toUpperCase()}]
-                      </span>
-                      <MessageSquare size={14} className="text-white/10" />
+                      <div className={`px-3 py-1 rounded-full text-[9px] font-bold uppercase tracking-widest ${pin.severity === 'Critical' ? 'bg-burned-coral/10 text-burned-coral border border-burned-coral/20' : 'bg-neon-accent/10 text-neon-accent border border-neon-accent/20'}`}>
+                         {pin.severity}
+                      </div>
+                      <MessageSquare size={16} className="text-white/20" />
                    </div>
-                   <p className="text-sm font-bold leading-relaxed text-white/80 italic">"{pin.feedback}"</p>
+                   <p className="text-lg font-bold leading-snug text-white/80">{pin.feedback}</p>
                    
                    <button 
                     onClick={() => navigate("/upskill")}
-                    className="w-full py-4 border border-neon-accent/20 text-neon-accent text-[9px] font-mono uppercase font-bold tracking-widest hover:bg-neon-accent hover:text-charcoal transition-all flex items-center justify-center gap-2"
+                    className="w-full py-4.5 rounded-2xl bg-white/5 border border-white/10 text-white/60 text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-neon-accent hover:text-charcoal hover:border-neon-accent transition-all flex items-center justify-center gap-3"
                    >
-                      LEARN_HOW_TO_FIX <ChevronRight size={14} />
+                      How to improve <ChevronRight size={16} />
                    </button>
                 </div>
               ))}

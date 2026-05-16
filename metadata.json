@@ -1,6 +1,6 @@
 {
-  "name": "INTERNLY",
-  "description": "INTERNLY is an end-to-end AI platform for career acceleration, featuring skill discovery, job deconstruction, personalized learning paths, and automated resume tailoring.",
+  "name": "Internly",
+  "description": "Internly is a personalized career companion that helps you discover your strengths, verify your skills, and guide you through every step of your professional journey with human-friendly AI support.",
   "requestFramePermissions": [],
   "majorCapabilities": [
     "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
