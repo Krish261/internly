@@ -4,7 +4,7 @@ import Landing from "./screens/Landing";
 import Onboarding from "./screens/Onboarding";
 import AssessmentHub from "./screens/AssessmentHub";
 import Dashboard from "./screens/Dashboard";
-import JobDeconstruction from "./screens/JobDeconstruction";
+import JobAnalysis from "./screens/JobAnalysis";
 import LearningMatrix from "./screens/LearningMatrix";
 import ResumeBuilder from "./screens/ResumeBuilder";
 import ApplyHub from "./screens/ApplyHub";
@@ -48,7 +48,7 @@ function Shell({ children }: { children: React.ReactNode }) {
   const menuItems = [
     { icon: LayoutDashboard, label: "Dashboard", path: "/dashboard" },
     { icon: Briefcase, label: "Market", path: "/market" },
-    { icon: Target, label: "Deconstruct", path: "/deconstruct" },
+    { icon: Target, label: "Analyze", path: "/analyze" },
     { icon: Layers, label: "Portfolio", path: "/portfolio" },
     { icon: FileText, label: "Resume", path: "/resume" },
     { icon: Brain, label: "Interview", path: "/interview" },
@@ -135,7 +135,7 @@ function AnimatedRoutes() {
           <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
           <Route path="/assess" element={<ProtectedRoute><AssessmentHub /></ProtectedRoute>} />
           <Route path="/learning" element={<ProtectedRoute minTier="Silver"><LearningMatrix /></ProtectedRoute>} />
-          <Route path="/deconstruct" element={<ProtectedRoute minTier="Silver"><JobDeconstruction /></ProtectedRoute>} />
+          <Route path="/analyze" element={<ProtectedRoute minTier="Silver"><JobAnalysis /></ProtectedRoute>} />
           <Route path="/market" element={<ProtectedRoute minTier="Silver"><MarketFeed /></ProtectedRoute>} />
           <Route path="/portfolio" element={<ProtectedRoute minTier="Silver"><PortfolioHub /></ProtectedRoute>} />
           <Route path="/critique" element={<ProtectedRoute minTier="Silver"><AICritique /></ProtectedRoute>} />

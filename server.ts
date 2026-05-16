@@ -97,8 +97,8 @@ async function startServer() {
     }
   });
 
-  // 3. Deconstruct Job (Silver)
-  app.post("/api/deconstruct-job", async (req, res) => {
+  // 3. Analyze Job (Silver)
+  app.post("/api/analyze-job", async (req, res) => {
     try {
       const { jd } = req.body;
       const ai = getAI();
@@ -119,8 +119,8 @@ async function startServer() {
       });
       res.json(JSON.parse(response.text));
     } catch (error) {
-      console.error("Deconstruct Job Error:", error);
-      res.status(500).json({ error: error instanceof Error ? error.message : "Failed to deconstruct job" });
+      console.error("Analyze Job Error:", error);
+      res.status(500).json({ error: error instanceof Error ? error.message : "Failed to analyze job" });
     }
   });
 

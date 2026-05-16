@@ -54,7 +54,7 @@ export default function Landing() {
           className="text-6xl md:text-[84px] font-[900] heading-bold mb-8 leading-[0.9] tracking-tighter"
         >
           STOP APPLYING.<br />
-          START <span className="text-neon-accent text-glow">DEPLOYING.</span>
+          START <span className="text-neon-accent text-glow">YOUR CAREER.</span>
         </motion.h1>
         
         <motion.p
@@ -68,19 +68,19 @@ export default function Landing() {
 
         <div className="flex gap-4 mb-24">
            <button onClick={() => navigate("/onboarding")} className="btn-primary px-12 py-5 text-sm tracking-[0.4em] shadow-[0_0_50px_rgba(0,255,204,0.3)]">
-              INITIALIZE_SYSTEM_v4
+              GET STARTED
            </button>
            <button className="px-12 py-5 border border-white/5 font-mono text-[10px] uppercase tracking-widest hover:border-white/20 transition-all">
-              VIEW_CORE_BENCHMARKS
+              EXPLORE FEATURES
            </button>
         </div>
 
         {/* Feature Deep-Dive (Screen 02) */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left max-w-7xl mx-auto px-6 mb-32">
            {[
-             { title: "ZERO_TYPING", desc: "Our neural engine extracts your profile from existing nodes. No forms. No repetition." },
-             { title: "DECONSTRUCTION", desc: "Every job description is broken down into its atomic requirement nodes for precise matching." },
-             { title: "AUTO_DEPLOY", desc: "1-Tap application execution. Our OS handles the form-fills while you scale your skills." }
+             { title: "NO MANUAL ENTRY", desc: "Our AI engine extracts your profile from your existing data. No forms. No repetition." },
+             { title: "JOB ANALYSIS", desc: "Every job description is broken down into its core requirements for precise matching." },
+             { title: "EASY APPLY", desc: "1-Tap application submission. Our platform handles the form-fills while you improve your skills." }
            ].map((feature, i) => (
              <motion.div 
                key={feature.title}
@@ -90,7 +90,7 @@ export default function Landing() {
                viewport={{ once: true }}
                className="p-10 card-surface bg-surface-matte/20 border-white/5 group hover:border-neon-accent/30 transition-all"
              >
-                <div className="flex items-center gap-2 text-neon-accent font-mono text-[8px] font-bold mb-4 italic">CORE_COMPONENT_{i+1}</div>
+                <div className="flex items-center gap-2 text-neon-accent font-mono text-[8px] font-bold mb-4 italic">FEATURE_{i+1}</div>
                 <div className="w-10 h-10 bg-white/5 border border-white/5 flex items-center justify-center mb-6 group-hover:bg-neon-accent/10 transition-all">
                    <Zap size={20} className="text-white/20 group-hover:text-neon-accent" />
                 </div>
@@ -111,20 +111,20 @@ export default function Landing() {
             <div className="w-2.5 h-2.5 rounded-full bg-red-500/50" />
             <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/50" />
             <div className="w-2.5 h-2.5 rounded-full bg-green-500/50" />
-            <div className="flex-1 text-[10px] font-mono text-center text-white/20 uppercase tracking-widest">GEMINI_DECONSTRUCTION_ENGINE</div>
+            <div className="flex-1 text-[10px] font-mono text-center text-white/20 uppercase tracking-widest">AI_ENGINE</div>
           </div>
           <div className="p-8 h-48 font-mono text-left space-y-4">
              <div className="flex items-start gap-4">
                <span className="text-neon-accent">{">"}</span>
                <div className="space-y-2">
-                 <p className="text-white/40 text-xs">ANALYZING TARGET ROLE: <span className="text-platinum uppercase font-bold">{roles[roleIndex]}</span></p>
+                 <p className="text-white/40 text-xs">ANALYZING ROLE: <span className="text-platinum uppercase font-bold">{roles[roleIndex]}</span></p>
                  <motion.div 
                    key={roleIndex}
                    initial={{ opacity: 0 }}
                    animate={{ opacity: 1 }}
                    className="space-y-1"
                  >
-                   <p className="text-neon-accent text-sm">EXTRACTING CORE_SKILLS...</p>
+                   <p className="text-neon-accent text-sm">IDENTIFYING SKILLS...</p>
                    <div className="flex flex-wrap gap-2 pt-2">
                      <span className="bg-neon-accent/10 border border-neon-accent/20 px-2 py-0.5 text-[9px] text-neon-accent">DYNAMIC_ROUTING</span>
                      <span className="bg-neon-accent/10 border border-neon-accent/20 px-2 py-0.5 text-[9px] text-neon-accent">REALTIME_PIPELINES</span>

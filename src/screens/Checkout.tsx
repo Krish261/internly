@@ -21,9 +21,9 @@ export default function Checkout() {
   const plans = [
     {
       id: "Bronze",
-      name: "Bronze_Core",
+      name: "Standard",
       price: "299",
-      description: "Fundamental skill verification and market identity.",
+      description: "Basic skill verification and public profile.",
       features: [
         "AI-Driven Skill Identification",
         "Market Readiness Score",
@@ -36,12 +36,12 @@ export default function Checkout() {
     },
     {
       id: "Silver",
-      name: "Silver_Tactical",
+      name: "Professional",
       price: "599",
-      description: "Aggressive role targeting and skill gap coverage.",
+      description: "Target roles and close your skill gaps.",
       features: [
-        "Unlimited Job Deconstruction",
-        "Learning Matrix Generator",
+        "Unlimited Job Analysis",
+        "Learning Plan Generator",
         "Competitive Benchmarking",
         "Skill Gap Alerts"
       ],
@@ -52,14 +52,14 @@ export default function Checkout() {
     },
     {
       id: "Gold",
-      name: "Gold_Execution",
+      name: "Premium",
       price: "1899",
-      description: "Full-scale application automation and expert tailoring.",
+      description: "Full application automation and AI tailoring.",
       features: [
-        "ATS Tailoring Engine (10/mo)",
-        "Automated Application Hub",
+        "ATS Resume Optimizer (10/mo)",
+        "Application Automation",
         "LinkedIn Outreach Scripts",
-        "Interview Prep Terminal"
+        "Interview Simulator"
       ],
       color: "text-neon-accent",
       accent: "bg-neon-accent/5",
@@ -75,8 +75,8 @@ export default function Checkout() {
   return (
     <div className="p-8 lg:p-12 max-w-7xl mx-auto space-y-16">
       <header className="text-center space-y-4 max-w-2xl mx-auto">
-        <h1 className="text-5xl heading-bold">SELECT_DEPLOYMENT<br/><span className="text-neon-accent">PACKAGE</span></h1>
-        <p className="label-mono text-white/40 leading-relaxed italic">"Scale your career trajectory with precise AI instrumentation."</p>
+        <h1 className="text-5xl heading-bold">SELECT YOUR<br/><span className="text-neon-accent">PLAN</span></h1>
+        <p className="label-mono text-white/40 leading-relaxed italic">"Accelerate your career with the power of artificial intelligence."</p>
       </header>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -100,7 +100,7 @@ export default function Checkout() {
             <div className="mb-10">
               <div className="flex items-baseline gap-2">
                 <span className="text-4xl font-black italic">₹{plan.price}</span>
-                <span className="text-[10px] font-mono opacity-40 uppercase">/ deployment</span>
+                <span className="text-[10px] font-mono opacity-40 uppercase">/ Total</span>
               </div>
             </div>
 
@@ -121,7 +121,7 @@ export default function Checkout() {
                   'border border-white/10 hover:bg-white/5'}
               `}
             >
-              {tier === plan.id ? "CURRENT_PACKAGE" : "INITIATE_UPGRADE"}
+              {tier === plan.id ? "YOUR PLAN" : "UPGRADE NOW"}
             </button>
           </motion.div>
         ))}
@@ -132,22 +132,22 @@ export default function Checkout() {
         <div className="flex items-center gap-4">
            <ShieldCheck className="text-neon-accent" size={32} />
            <div>
-              <p className="label-mono text-xs">Payment_Secured</p>
+              <p className="label-mono text-xs">Secure Payment</p>
               <p className="text-[10px] opacity-40 font-mono uppercase">256-bit AES Encryption</p>
            </div>
         </div>
         <div className="flex items-center gap-4">
            <CreditCard className="text-neon-accent" size={32} />
            <div>
-              <p className="label-mono text-xs">Dynamic_Pricing</p>
+              <p className="label-mono text-xs">Pricing</p>
               <p className="text-[10px] opacity-40 font-mono uppercase">Transparent Fee Structure</p>
            </div>
         </div>
         <div className="flex items-center gap-4">
            <Star className="text-neon-accent" size={32} />
            <div>
-              <p className="label-mono text-xs">Carrier_Optimized</p>
-              <p className="text-[10px] opacity-40 font-mono uppercase">Verified Placement Engine</p>
+              <p className="label-mono text-xs">Optimized</p>
+              <p className="text-[10px] opacity-40 font-mono uppercase">Powered by AI</p>
            </div>
         </div>
       </footer>

@@ -81,30 +81,30 @@ export default function Onboarding() {
                  <div className="w-16 h-16 bg-neon-accent/10 border border-neon-accent/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
                     <User className="text-neon-accent" size={32} />
                  </div>
-                 <h2 className="text-5xl heading-bold italic uppercase tracking-tighter">IDENTITY_AUTH</h2>
-                 <p className="label-mono opacity-50 uppercase tracking-widest">Secure identity verification terminal</p>
+                 <h2 className="text-5xl heading-bold italic uppercase tracking-tighter">WELCOME</h2>
+                 <p className="label-mono opacity-50 uppercase tracking-widest">Identify yourself to continue</p>
                </div>
 
                <div className="space-y-4 max-w-md mx-auto">
                  <div className="flex flex-col gap-3">
                    <button onClick={() => setStep("intent")} className="w-full bg-white text-charcoal py-4 font-black uppercase tracking-widest flex items-center justify-center gap-3 hover:brightness-90 transition-all">
                       <img src="https://www.google.com/favicon.ico" className="w-3 h-3" alt="Google" />
-                      AUTHENTICATE_GOOGLE
+                      Sign in with Google
                    </button>
                    <button onClick={() => setStep("intent")} className="w-full bg-[#0077b5] text-white py-4 font-black uppercase tracking-widest flex items-center justify-center gap-3 hover:brightness-110 transition-all">
                       <Linkedin className="w-4 h-4" />
-                      AUTHENTICATE_LINKEDIN
+                      Sign in with LinkedIn
                    </button>
                  </div>
 
                  <div className="flex items-center gap-4 py-4">
                    <div className="flex-1 h-px bg-white/5" />
-                   <span className="text-[10px] font-mono text-white/20">OR SESSION_OVERRIDE</span>
+                   <span className="text-[10px] font-mono text-white/20">OR SIGN IN MANUALLY</span>
                    <div className="flex-1 h-px bg-white/5" />
                  </div>
 
                  <input 
-                   placeholder="Enter Access Key (Email)"
+                   placeholder="Enter your Email"
                    className="terminal-input w-full p-4 mb-4"
                    value={formData.name}
                    onChange={e => setFormData({...formData, name: e.target.value})}
@@ -115,7 +115,7 @@ export default function Onboarding() {
                    onClick={() => setStep("intent")}
                    className="btn-primary w-full"
                  >
-                   VERIFY_IDENTITY
+                   CONTINUE
                  </button>
                </div>
             </div>
@@ -124,14 +124,14 @@ export default function Onboarding() {
           {step === "intent" && (
             <div className="space-y-12">
               <div className="space-y-4">
-                 <h1 className="text-5xl heading-bold italic uppercase tracking-tighter">INTENT_DISCOVERY</h1>
-                 <p className="label-mono text-white/40">Select primary mission objective.</p>
+                 <h1 className="text-5xl heading-bold italic uppercase tracking-tighter">YOUR GOAL</h1>
+                 <p className="label-mono text-white/40">Select your primary objective.</p>
               </div>
               <div className="grid grid-cols-1 gap-4">
                 {[
-                  { id: "intern", label: "I need an internship", desc: "First-time entry into technical ecosystem." },
-                  { id: "pivot", label: "I want to pivot career", desc: "Lateral shift across functional nodes." },
-                  { id: "pro", label: "I want to level up", desc: "Scaling authority in current track." }
+                  { id: "intern", label: "I need an internship", desc: "Starting out in the tech world." },
+                  { id: "pivot", label: "I want to pivot career", desc: "Changing my career path." },
+                  { id: "pro", label: "I want to level up", desc: "Growing in my current role." }
                 ].map(i => (
                   <button 
                     key={i.id}
@@ -152,14 +152,14 @@ export default function Onboarding() {
           {step === "stage" && (
             <div className="space-y-12">
               <div className="space-y-4">
-                 <h1 className="text-5xl heading-bold italic uppercase tracking-tighter">INGESTION</h1>
-                 <p className="label-mono text-white/40">Verify current node status.</p>
+                 <h1 className="text-5xl heading-bold italic uppercase tracking-tighter">YOUR STATUS</h1>
+                 <p className="label-mono text-white/40">Select your current stage.</p>
               </div>
               <div className="grid grid-cols-1 gap-4">
                 {[
-                  { id: "academic", label: "ACADEMIC_NODE", desc: "Currently enrolled in higher ed." },
-                  { id: "fresh", label: "FRESH_DEPLOYMENT", desc: "Recent graduate, 0-1 years exp." },
-                  { id: "core", label: "CORE_PROFESSIONAL", desc: "Established industry technician." }
+                  { id: "academic", label: "STUDENT", desc: "Currently studying in college/university." },
+                  { id: "fresh", label: "RECENT GRADUATE", desc: "New to the workforce, 0-1 years exp." },
+                  { id: "core", label: "PROFESSIONAL", desc: "Experienced industry professional." }
                 ].map(s => (
                   <button 
                     key={s.id}
@@ -185,8 +185,8 @@ export default function Onboarding() {
           {step === "role" && (
             <div className="space-y-12 text-center">
                <div className="space-y-4 mb-16">
-                  <h1 className="text-5xl heading-bold italic uppercase tracking-tighter">TARGET_VECTOR</h1>
-                  <p className="label-mono text-white/40 italic">Pinpointing primary career designation.</p>
+                  <h1 className="text-5xl heading-bold italic uppercase tracking-tighter">TARGET ROLE</h1>
+                  <p className="label-mono text-white/40 italic">Select your ideal job title.</p>
                </div>
                <div className="grid grid-cols-2 gap-4">
                  {["Product Management", "Software Development", "UI/UX Design", "Marketing & Analytics", "Sales & Business", "Data Engineering"].map(r => (
@@ -205,8 +205,8 @@ export default function Onboarding() {
           {step === "preferences" && (
             <div className="space-y-12">
                <div className="space-y-4">
-                  <h1 className="text-5xl heading-bold italic uppercase tracking-tighter">REGION_FLOW</h1>
-                  <p className="label-mono text-white/40 italic">Mapping deployment preferences & geographic bias.</p>
+                  <h1 className="text-5xl heading-bold italic uppercase tracking-tighter">PREFERENCES</h1>
+                  <p className="label-mono text-white/40 italic">Select your preferred location and culture.</p>
                </div>
                <div className="space-y-8">
                   <div className="space-y-4">
@@ -244,7 +244,7 @@ export default function Onboarding() {
                     onClick={() => setStep("background")}
                     className="btn-primary w-full py-6 mt-8"
                   >
-                    CONTINUE_TO_INGESTION
+                    CONTINUE TO PROFILE
                   </button>
                </div>
             </div>
@@ -253,25 +253,25 @@ export default function Onboarding() {
           {step === "background" && (
             <div className="space-y-12">
                <div className="space-y-4">
-                  <h1 className="text-5xl heading-bold italic uppercase tracking-tighter">DATA_INGESTION</h1>
-                  <p className="label-mono text-white/40 italic">Establishing baseline matrix through existing artifacts.</p>
+                  <h1 className="text-5xl heading-bold italic uppercase tracking-tighter">UPLOAD DATA</h1>
+                  <p className="label-mono text-white/40 italic">Create your profile using existing resumes or summaries.</p>
                </div>
                <div className="space-y-8">
                   <div className="p-20 border-2 border-dashed border-white/5 bg-white/[0.02] rounded-3xl flex flex-col items-center justify-center text-center gap-6 group hover:bg-white/[0.04] hover:border-neon-accent/30 transition-all cursor-pointer">
                      <Upload className="text-white/10 group-hover:text-neon-accent transition-colors" size={48} />
                      <div className="space-y-1">
-                        <span className="text-xs font-black uppercase tracking-widest opacity-40">Drop Resume Artifact</span>
+                        <span className="text-xs font-black uppercase tracking-widest opacity-40">Upload Your Resume</span>
                         <p className="text-[9px] font-mono text-white/20">Supports PDF, DOCX, TXT</p>
                      </div>
                   </div>
 
                   <div className="relative">
                     <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-white/5" /></div>
-                    <div className="relative flex justify-center text-[8px] font-mono uppercase bg-charcoal px-4 text-white/20 tracking-[0.5em]">OR SYSTEM_INPUT</div>
+                    <div className="relative flex justify-center text-[8px] font-mono uppercase bg-charcoal px-4 text-white/20 tracking-[0.5em]">OR TYPE YOUR SUMMARY</div>
                   </div>
 
                   <textarea 
-                    placeholder="Paste raw profile data or career summary for neural extraction..."
+                    placeholder="Paste your resume text or a short summary of your background here..."
                     className="terminal-input w-full h-40 font-serif normal-case p-6 text-base italic leading-relaxed"
                     value={formData.background}
                     onChange={e => setFormData({...formData, background: e.target.value})}
@@ -282,7 +282,7 @@ export default function Onboarding() {
                     onClick={handleFinish}
                     className="btn-primary w-full py-6 mt-4 shadow-[0_0_50px_rgba(0,255,204,0.1)]"
                   >
-                    EXECUTE_ANALYSIS
+                    CREATE MY PROFILE
                   </button>
                </div>
             </div>
@@ -302,10 +302,10 @@ export default function Onboarding() {
                 <Brain className="text-neon-accent relative z-10" size={120} />
               </div>
               <div className="text-center space-y-4">
-                 <h2 className="text-2xl font-black italic tracking-[0.2em] text-neon-accent text-glow uppercase">PROFILE_CALCULATION</h2>
+                 <h2 className="text-2xl font-black italic tracking-[0.2em] text-neon-accent text-glow uppercase">PREPARING YOUR DASHBOARD</h2>
                  <div className="space-y-1">
-                    <p className="label-mono text-white/40 uppercase tracking-[0.3em] font-bold text-[10px] animate-pulse italic">MAPPING_PEER_BENCHMARKS...</p>
-                    <p className="text-[9px] font-mono text-white/10 uppercase italic">STRUCTURING_BASELINE_SKILL_MATRIX</p>
+                    <p className="label-mono text-white/40 uppercase tracking-[0.3em] font-bold text-[10px] animate-pulse italic">Analyzing your profile...</p>
+                    <p className="text-[9px] font-mono text-white/10 uppercase italic">Organizing your professional data</p>
                  </div>
               </div>
             </motion.div>

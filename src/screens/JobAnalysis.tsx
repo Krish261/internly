@@ -5,14 +5,14 @@ import { api } from "../services/api";
 import { Search, Loader2, Target, CheckCircle, XCircle, ChevronRight, Zap, Brain } from "lucide-react";
 import { useNavigate, Link } from "react-router-dom";
 
-export default function JobDeconstruction() {
+export default function JobAnalysis() {
   const { user, setUser, tier, setTier } = useApp();
   const navigate = useNavigate();
   const [jd, setJd] = useState("");
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<{ mustHave: string[], niceToHave: string[] } | null>(null);
 
-  const handleDeconstruct = async () => {
+  const handleAnalyze = async () => {
     if (tier === "Bronze") {
       navigate("/checkout");
       return;
@@ -20,7 +20,7 @@ export default function JobDeconstruction() {
 
     setLoading(true);
     try {
-      const data = await api.deconstructJob(jd);
+      const data = await api.analyzeJob(jd);
       setResult(data);
       if (user) {
         setUser({
@@ -55,23 +55,23 @@ export default function JobDeconstruction() {
         <header className="mb-12">
           <div className="flex items-center gap-2 text-neon-accent mb-4">
             <Target size={16} />
-            <span className="font-mono text-[10px] uppercase italic tracking-[0.3em] font-bold">TARGET_ACQUISITION_TERMINAL</span>
+            <span className="font-mono text-[10px] uppercase italic tracking-[0.3em] font-bold">JOB_ANALYSIS_CONSOLE</span>
           </div>
-          <h1 className="text-5xl heading-bold italic uppercase">ROLE_DECONSTRUCTOR</h1>
-          <p className="label-mono text-white/40 mt-4 leading-relaxed italic">"Analyzing market-side requirements for deployment alignment."</p>
+          <h1 className="text-5xl heading-bold italic uppercase">JOB_ANALYZER</h1>
+          <p className="label-mono text-white/40 mt-4 leading-relaxed italic">"Analyzing job requirements to align your profile."</p>
         </header>
 
         <div className="flex-1 flex flex-col gap-8">
           <div className="flex-1 flex flex-col space-y-4">
             <div className="flex justify-between items-end">
-               <label className="label-mono uppercase tracking-widest text-[10px] text-white/60">Raw_Signal_Input</label>
-               <span className="text-[9px] font-mono text-white/20 uppercase">Awaiting JD Matrix</span>
+               <label className="label-mono uppercase tracking-widest text-[10px] text-white/60">PASTE_JOB_DESCRIPTION</label>
+               <span className="text-[9px] font-mono text-white/20 uppercase">Awaiting Input Content</span>
             </div>
             <textarea 
               value={jd}
               onChange={e => setJd(e.target.value)}
               className="flex-1 bg-surface-matte/40 border border-white/5 p-8 font-mono text-xs resize-none focus:border-neon-accent outline-none transition-all rounded-2xl shadow-inner placeholder:text-white/10 text-white/80 leading-relaxed"
-              placeholder="Paste the LinkedIn job description, company website text, or target role details here to begin deconstruction..."
+              placeholder="Paste the LinkedIn job description, company website text, or target role details here to begin analysis..."
             />
           </div>
           
@@ -86,12 +86,12 @@ export default function JobDeconstruction() {
 
             <button 
               disabled={!jd || loading}
-              onClick={handleDeconstruct}
+              onClick={handleAnalyze}
               className="btn-primary w-full py-6 flex items-center justify-center gap-4 text-sm tracking-[0.4em]"
             >
               {loading ? <Loader2 className="animate-spin" size={20} /> : <Zap size={20} />}
               <span>
-                {tier === "Bronze" ? "UPGRADE TO DECONSTRUCT" : (loading ? "DECONSTRUCTING..." : "EXECUTE_ANALYSIS")}
+                {tier === "Bronze" ? "UPGRADE TO ANALYZE" : (loading ? "ANALYZING..." : "RUN_ANALYSIS")}
               </span>
             </button>
           </div>
@@ -114,9 +114,9 @@ export default function JobDeconstruction() {
               </div>
               <div className="space-y-2">
                  <p className="text-white/20 font-mono text-[10px] uppercase tracking-[0.4em] max-w-xs leading-loose italic font-bold">
-                   Awaiting System Signal
+                   Awaiting Analysis Input
                  </p>
-                 <p className="text-[9px] font-mono text-white/10 uppercase tracking-widest">Connect JD terminal to populate extraction matrix</p>
+                 <p className="text-[9px] font-mono text-white/10 uppercase tracking-widest">Connect job text to populate comparison view</p>
               </div>
             </motion.div>
           ) : (
@@ -128,8 +128,8 @@ export default function JobDeconstruction() {
             >
               <div className="flex items-end justify-between border-b border-white/5 pb-12">
                 <div>
-                  <h3 className="label-mono text-neon-accent font-bold mb-2">Extraction_Results</h3>
-                  <p className="text-4xl font-black uppercase italic tracking-tighter">Identity_Match: <span className={score > 70 ? 'text-neon-accent' : 'text-burned-coral'}>{score}%</span></p>
+                  <h3 className="label-mono text-neon-accent font-bold mb-2">ANALYSIS_RESULTS</h3>
+                  <p className="text-4xl font-black uppercase italic tracking-tighter">PROFILE_MATCH: <span className={score > 70 ? 'text-neon-accent' : 'text-burned-coral'}>{score}%</span></p>
                 </div>
                 <div className="flex flex-col items-end gap-1">
                    <div className="flex gap-1">
@@ -148,8 +148,8 @@ export default function JobDeconstruction() {
                         <CheckCircle className="text-neon-accent" size={24} />
                      </div>
                      <div>
-                        <h4 className="text-[10px] uppercase font-mono tracking-[0.4em] text-white/40">Critical Nodes</h4>
-                        <p className="text-xl font-black uppercase italic italic tracking-tight">Requirement Logic</p>
+                        <h4 className="text-[10px] uppercase font-mono tracking-[0.4em] text-white/40">Core Requirements</h4>
+                        <p className="text-xl font-black uppercase italic italic tracking-tight">Essential Qualifications</p>
                      </div>
                   </div>
                   
@@ -170,7 +170,7 @@ export default function JobDeconstruction() {
                               onClick={() => navigate("/learning")}
                               className="flex items-center gap-3 group/btn"
                             >
-                               <span className="text-burned-coral font-mono text-[9px] uppercase font-bold tracking-widest opacity-60 group-hover/btn:opacity-100 transition-opacity">BRIDGE_GAP</span>
+                               <span className="text-burned-coral font-mono text-[9px] uppercase font-bold tracking-widest opacity-60 group-hover/btn:opacity-100 transition-opacity">LEARN_NOW</span>
                                <ChevronRight size={16} className="text-burned-coral/40 group-hover/btn:text-burned-coral" />
                             </button>
                           )}
@@ -186,8 +186,8 @@ export default function JobDeconstruction() {
                         <Zap className="text-white/40" size={24} />
                      </div>
                      <div>
-                        <h4 className="text-[10px] uppercase font-mono tracking-[0.4em] text-white/40">Bonus Vectors</h4>
-                        <p className="text-xl font-black uppercase italic italic tracking-tight">Preferred Capabilities</p>
+                        <h4 className="text-[10px] uppercase font-mono tracking-[0.4em] text-white/40">Nice-to-Have Skills</h4>
+                        <p className="text-xl font-black uppercase italic italic tracking-tight">Bonus Qualifications</p>
                      </div>
                   </div>
                   <div className="grid grid-cols-2 gap-4">
@@ -206,7 +206,7 @@ export default function JobDeconstruction() {
                   className="w-full bg-white text-charcoal hover:bg-white/90 py-6 font-black uppercase tracking-[0.4em] text-xs shadow-[0_0_50px_rgba(255,255,255,0.1)] transition-all flex items-center justify-center gap-4"
                 >
                   <Brain size={20} />
-                  GENERATE_LEARNING_MATRIX
+                  GENERATE_LEARNING_PLAN
                 </button>
               </div>
             </motion.div>

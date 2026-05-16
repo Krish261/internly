@@ -17,13 +17,13 @@ export const api = {
     if (!res.ok) throw new Error("Failed to generate assessment");
     return res.json();
   },
-  deconstructJob: async (jd: string) => {
-    const res = await fetch("/api/deconstruct-job", {
+  analyzeJob: async (jd: string) => {
+    const res = await fetch("/api/analyze-job", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ jd }),
     });
-    if (!res.ok) throw new Error("Failed to deconstruct job");
+    if (!res.ok) throw new Error("Failed to analyze job");
     return res.json();
   },
   tailorResume: async (profile: any, jd: string) => {

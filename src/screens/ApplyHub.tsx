@@ -64,10 +64,10 @@ export default function ApplyHub() {
         <div>
           <div className="flex items-center gap-2 mb-4">
             <div className="w-2 h-2 bg-neon-accent rounded-full animate-ping"></div>
-            <h3 className="text-xs font-black uppercase tracking-[0.4em] text-neon-accent">Deployment_Terminal // live</h3>
+            <h3 className="text-xs font-black uppercase tracking-[0.4em] text-neon-accent">Application_Center // live</h3>
           </div>
-          <h1 className="text-5xl heading-bold italic uppercase">APPLY_HUB<br/><span className="text-neon-accent">TERMINAL</span></h1>
-          <p className="label-mono text-white/40 mt-4 italic">"Automated distribution of tailored identity artifacts."</p>
+          <h1 className="text-5xl heading-bold italic uppercase">APPLY_HUB<br/><span className="text-neon-accent">CENTER</span></h1>
+          <p className="label-mono text-white/40 mt-4 italic">"Automated sending of your customized career documents."</p>
         </div>
         
         {/* Screen 13: Role Discovery Filters */}
@@ -96,8 +96,8 @@ export default function ApplyHub() {
         {/* Main Feed: Screen 14 Job Pipeline */}
         <div className="lg:col-span-3 space-y-6">
           <div className="flex items-center justify-between mb-4 border-b border-white/5 pb-4">
-            <h3 className="label-mono text-neon-accent font-bold">Signal_Matched_Opportunities</h3>
-            <span className="text-[10px] font-mono text-white/20 uppercase tracking-widest">{filteredJobs.length} NODES DETECTED</span>
+            <h3 className="label-mono text-neon-accent font-bold">Recommended_Opportunities</h3>
+            <span className="text-[10px] font-mono text-white/20 uppercase tracking-widest">{filteredJobs.length} ROLES FOUND</span>
           </div>
 
           <AnimatePresence>
@@ -127,8 +127,8 @@ export default function ApplyHub() {
                     </div>
                     <p className="text-3xl font-black uppercase italic tracking-tighter group-hover:text-white transition-all duration-500 leading-none">{job.role}</p>
                     <div className="flex gap-4">
-                       <span className="text-[9px] font-mono text-neon-accent/50 uppercase">Verified Skillset match</span>
-                       <span className="text-[9px] font-mono text-white/10 uppercase italic">Ref: {job.id}</span>
+                       <span className="text-[9px] font-mono text-neon-accent/50 uppercase">Verified Skills</span>
+                       <span className="text-[9px] font-mono text-white/10 uppercase italic">ID: {job.id}</span>
                     </div>
                   </div>
                 </div>
@@ -136,7 +136,7 @@ export default function ApplyHub() {
                 <div className="flex items-center gap-12 w-full xl:w-auto justify-between xl:justify-end">
                   <div className="text-right flex flex-col items-end">
                      <div className="text-4xl font-black italic tracking-tighter text-neon-accent text-glow">{job.score}%</div>
-                     <span className="text-[9px] uppercase font-mono tracking-widest text-white/20 uppercase font-bold">Vector_Match</span>
+                     <span className="text-[9px] uppercase font-mono tracking-widest text-white/20 uppercase font-bold">MATCH_SCORE</span>
                   </div>
                   
                   <div className="flex items-center gap-4">
@@ -157,7 +157,7 @@ export default function ApplyHub() {
                       >
                         {applying === job.id ? <Loader2 className="animate-spin" size={16} /> : <Zap size={16} className="group-hover/apply:animate-pulse" />}
                         <span className="font-black uppercase tracking-[0.2em]">
-                          {applying === job.id ? "DISTRIBUTING..." : (tier === 'Gold' ? "1-CLICK APPLY" : "UPGRADE TO APPLY")}
+                          {applying === job.id ? "SUBMITTING..." : (tier === 'Gold' ? "1-CLICK APPLY" : "UPGRADE TO APPLY")}
                         </span>
                       </button>
                     ) : (
@@ -176,11 +176,11 @@ export default function ApplyHub() {
         {/* Sidebar Status: Screen 14 Spec */}
         <div className="space-y-12">
            <section className="space-y-6">
-              <h3 className="label-mono text-neon-accent font-bold">PIPELINE_STATUS</h3>
+              <h3 className="label-mono text-neon-accent font-bold">APPLICATION_STATUS</h3>
               <div className="bg-surface-matte/40 border border-white/5 rounded-2xl overflow-hidden divide-y divide-white/5 shadow-2xl">
                 <div className="p-8 flex justify-between items-center group hover:bg-white/[0.01] transition-colors">
                    <div className="space-y-1">
-                      <span className="text-[10px] uppercase font-mono text-white/30 tracking-widest">Total Distributed</span>
+                      <span className="text-[10px] uppercase font-mono text-white/30 tracking-widest">Total Applications</span>
                       <p className="text-3xl font-black italic tracking-tighter">12</p>
                    </div>
                    <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center">
@@ -209,7 +209,7 @@ export default function ApplyHub() {
            </section>
 
            <section className="card-surface bg-white/[0.02] p-8 space-y-6">
-              <h4 className="label-mono text-[10px] font-bold text-white/20 uppercase tracking-[0.3em]">System Intelligence</h4>
+              <h4 className="label-mono text-[10px] font-bold text-white/20 uppercase tracking-[0.3em]">AI Optimization</h4>
               <div className="space-y-4">
                  <div className="flex gap-3">
                     <ShieldCheck size={14} className="text-neon-accent shrink-0" />
@@ -217,11 +217,11 @@ export default function ApplyHub() {
                  </div>
                  <div className="flex gap-3">
                     <Zap size={14} className="text-neon-accent shrink-0" />
-                    <p className="text-[9px] font-mono text-white/40 uppercase leading-relaxed font-bold">Artifact Tailoring: <span className="text-neon-accent">ACTIVE</span></p>
+                    <p className="text-[9px] font-mono text-white/40 uppercase leading-relaxed font-bold">Document Tuning: <span className="text-neon-accent">ACTIVE</span></p>
                  </div>
               </div>
               <div className="pt-4 border-t border-white/5">
-                 <p className="text-[8px] font-mono text-white/20 uppercase italic tracking-widest">"Optimization cycle complete. Pipeline stable."</p>
+                 <p className="text-[8px] font-mono text-white/20 uppercase italic tracking-widest">"Analysis complete. Application ready."</p>
               </div>
            </section>
         </div>
